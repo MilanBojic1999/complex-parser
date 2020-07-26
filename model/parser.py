@@ -1,4 +1,5 @@
 import cmath as cm
+import collections
 
 _Constants = {
     'pi': cm.pi,
@@ -62,7 +63,13 @@ class Parser:
         self.expr = expr
 
     def exec(self, x):
-        if x in _Constants.keys():
+        if isinstance(x,collections.Hashable) and x in _Constants.keys():
             x = _Constants.get(x)
         local['x'] = x
         return eval(self.expr, local)
+
+    def real_exec(self,x):
+        return real(self.exec(x))
+
+    def imag_exec(self,x):
+        return imag(self.exec(x))
