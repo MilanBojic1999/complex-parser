@@ -57,16 +57,12 @@ _Functions = {
 local = {**_Constants, **_Functions}
 
 
-
 class Parser:
     def __init__(self, expr: str):
         self.expr = expr
-        #self.fun = fun_parser(expr)
-        #self.val = 0
 
     def exec(self, x):
         if x in _Constants.keys():
             x = _Constants.get(x)
         local['x'] = x
         return eval(self.expr, local)
-
