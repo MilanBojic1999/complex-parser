@@ -1,12 +1,12 @@
 import cmath as cm
 
-__Constants = {
+_Constants = {
     'pi': cm.pi,
     'Pi': cm.pi,
     'PI': cm.pi,
     'e': cm.e,
     'phi': (1 + 5 ** .5) / 2,
-    'i': (-1) ** .5
+    'i': cm.sqrt(-1)
 
 }
 
@@ -28,12 +28,12 @@ def real(x):
 def imag(x):
     if type(x) == complex:
         return x.imag
-    return x
+    return 0
 
 
-__Variables = ('x', 'y', 'z', 't')
+_Variables = ('x', 'y', 'z', 't')
 
-__Operation = {
+_Operation = {
     '+': 1,
     '-': 1,
     '*': 2,
@@ -41,8 +41,7 @@ __Operation = {
 
 }
 
-__Functions = {
-    'x': iden,
+_Functions = {
     'real': real,
     'imag': imag,
     'abs': abs,
@@ -55,50 +54,19 @@ __Functions = {
     'tan': cm.tan
 }
 
+local = {**_Constants, **_Functions}
 
-class StackFunction:
-    def __init__(self, f, sf=None):
-        self.f = f
-        self.sf = None
-        self.sf = sf
-
-    def evaluate(self, num):
-        if self.sf is not None:
-            x = self.sf.evaluate(num)
-            return self.f(x)
-
-        return self.f(num)
-
-
-def basic_parser(s: str) -> StackFunction:
-    vals = []
-    stck = []
-
-
-def fun_parser(s: str) -> StackFunction:
-    if str[0] in __Variables:
-        return StackFunction(iden)
-    f: StackFunction
-
-    index = s.find('(')
-    if not (index not in (3, 4)):
-        raise Exception('Not a function to parse')
-
-    temp = s[0:index]
-    print(temp)
-
-    if temp in __Functions:
-        f = __Functions.get(temp)
-    else:
-        raise Exception('Not a function to parse')
-
-    end = s[::-1].find(')')
-
-    return f(str[index + 1:end])
 
 
 class Parser:
     def __init__(self, expr: str):
         self.expr = expr
-        self.fun = basic_parser(expr)
-        self.val = 0
+        #self.fun = fun_parser(expr)
+        #self.val = 0
+
+    def exec(self, x):
+        if x in _Constants.keys():
+            x = _Constants.get(x)
+        local['x'] = x
+        return eval(self.expr, local)
+
