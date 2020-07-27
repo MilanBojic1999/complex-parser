@@ -9,20 +9,20 @@ def null_line(x):
 
 fun = input('Put your function: ')
 
-arr = np.arange(-10., 10., 0.02)
+arr = np.arange(-5., 5., 0.02, dtype='complex_')
 
 p = Parser(fun)
 
-f1 = np.vectorize(p.real_exec)
-f2 = np.vectorize(p.imag_exec)
-nf = np.vectorize(null_line)
+f1 = np.vectorize(p.real_exec, otypes=[complex])
+f2 = np.vectorize(p.imag_exec, otypes=[complex])
+nf = np.vectorize(null_line, otypes=[complex])
 
 fig, ax = pl.subplots()
 
-ax.plot(arr, nf(arr),color = 'green')
-ax.plot(nf(arr), arr,color = 'green')
-ax.plot(f1(arr), f2(arr),color = 'blue')
-#ax.plot(arr, f1(arr),color = 'red')
+ax.plot(arr, nf(arr), color='green')
+ax.plot(nf(arr), arr, color='green')
+# ax.plot(f1(arr), f2(arr), color='blue')
+ax.plot(arr, f1(arr), color='red')
 
 pl.grid(True)
 

@@ -11,25 +11,27 @@ _Constants = {
 
 }
 
+li = _Constants['i']
 
-def iden(x):
+
+def identity(x):
     return x
 
 
-def mypow(x, p):
+def power(x, p):
     return x ** p
 
 
-def real(x):
+def real(x) -> float:
     if type(x) == complex:
         return x.real
     return x
 
 
-def imag(x):
+def imag(x) -> float:
     if type(x) == complex:
         return x.imag
-    return 0
+    return 0.0
 
 
 _Variables = ('x', 'y', 'z', 't')
@@ -46,7 +48,7 @@ _Functions = {
     'real': real,
     'imag': imag,
     'abs': abs,
-    'pow': mypow,
+    'pow': power,
     'sqrt': cm.sqrt,
     'exp': cm.exp,
     'log': cm.log,
@@ -63,13 +65,16 @@ class Parser:
         self.expr = expr
 
     def exec(self, x):
-        if isinstance(x,collections.Hashable) and x in _Constants.keys():
+        if isinstance(x, collections.Hashable) and x in _Constants.keys():
             x = _Constants.get(x)
         local['x'] = x
         return eval(self.expr, local)
 
-    def real_exec(self,x):
+    def real_exec(self, x) -> float:
         return real(self.exec(x))
 
-    def imag_exec(self,x):
+    def imag_exec(self, x) -> float:
         return imag(self.exec(x))
+
+    def real2complex(self, x) -> complex:
+        return x + self.exec(x) * li
