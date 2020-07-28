@@ -1,0 +1,19 @@
+
+<AppView>:
+    input: tinput
+
+    Label:
+        font_size: 50
+        center_x: root.width/2
+        top: root.top-50
+        text: "Popara"
+
+    TextInput:
+        id: tinput
+        height: 50
+        width: 200
+        pos: self.parent.center_x-self.width/2, 50
+        multiline: False
+        #position: self.parent.center_x+100, self.parent.size_hint_y+50
+        on_text_validate: root.funs()
+        text: "Input your function"
