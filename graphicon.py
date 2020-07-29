@@ -44,6 +44,8 @@ def fun_plot(expressions: str):
 
     pl.grid(True)
 
+    fig.savefig("plot.png")
+
     pl.show()
 
 

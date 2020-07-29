@@ -1,19 +1,30 @@
 
+<Plot>:
+    size: 100,200
+    pos_hint: {'x': 0.0, 'y': 0.0}
+    canvas:
+        Color:
+            rgba:0,1,1,1
+        Ellipse:
+            pos: self.pos
+            size: self.size
+    Image:
+        size: 400,400
+        #pos_hint: {'x': 0.10, 'y': 0.5}
+        pos: self.parent.center_x/2,self.parent.center_y/2
+        source: 'plot.png'
+
+
 <AppView>:
-    input: tinput
+    pl: plot
 
-    Label:
-        font_size: 50
-        center_x: root.width/2
-        top: root.top-50
-        text: "Popara"
+    size: 400,400
+    canvas.before:
+        Color:
+            rgba: 1,.91,0.2,1
+        Rectangle:
+            pos:self.pos
+            size: self.size
 
-    TextInput:
-        id: tinput
-        height: 50
-        width: 200
-        pos: self.parent.center_x-self.width/2, 50
-        multiline: False
-        #position: self.parent.center_x+100, self.parent.size_hint_y+50
-        on_text_validate: root.funs()
-        text: "Input your function"
+    Plot:
+        id:plot
