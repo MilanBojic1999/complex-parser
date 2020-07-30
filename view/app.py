@@ -1,13 +1,13 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.relativelayout import RelativeLayout
 
 zooms = [10, 50, 100, 150, 200]
 
 
 class Plot(Widget):
-    pass
+    src = StringProperty("view/plot.png")
 
 
 class PlotArea(RelativeLayout):
@@ -16,7 +16,7 @@ class PlotArea(RelativeLayout):
         super().__init__(**kw)
 
 
-class AppView(RelativeLayout):
+class AppView(Widget):
     tinp = ObjectProperty(None)
 
     def __init__(self, **kwargs):

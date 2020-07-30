@@ -1,42 +1,58 @@
 
 <Plot>:
-    image: img
-    Image:
-        id: img
-        size: self.size
-        pos: self.pos
-        #source: 'input.png'
+    size: 100,100
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            source: self.src
+            pos: self.pos
+            size: self.size
+
 
 <PlotArea>:
-    pl:plot
-    pl2:plot2
+    pl:inputplt
+    pl2:outputplt
+
+    canvas:
+        Color:
+            rgba: 1,.5,.7,1
+        Rectangle:
+            source: "plot.png"
+            pos: self.pos
+            size: self.size
 
 
     Plot:
-        id:plot
-        size: 100,50
-        x:0
-        center_y:self.center_y
+        id:inputplt
+        size_hint: None, None
+        size: 320,240
+        #pos: -320,10
+        src: "input.png"
 
     Plot:
-        id:plot2
-        size: 100,200
-        x:self.center_x/2
-        center_y:self.center_y
+        id:outputplt
+        size_hint: None, None
+        size: 320,240
+        pos: 0,0
+        src: "output.png"
 
 
 <AppView>:
     pl: plot
+    #size_hint: None, None
+    #size: self.parent.size
 
-    size: 800,800
     canvas.before:
         Color:
-            rgba: 1,.91,0.2,1
+            rgba: .4,.91,0.2,1
         Rectangle:
             pos:self.pos
             size: self.size
 
-    Plot:
+    PlotArea:
         id:plot
-        img:
-            source: 'input.png'
+        #size_hint: None, None
+        size: root.width-20,root.height-60
+        pos: 5,20
+        #src: "input.png"
