@@ -1,10 +1,10 @@
 from kivy.app import App
-from kivy.uix.image import AsyncImage, Image
 from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
-from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.relativelayout import RelativeLayout
-from kivy.loader import Loader
+
+zooms = [10, 50, 100, 150, 200]
+
 
 class Plot(Widget):
     pass
@@ -21,7 +21,6 @@ class AppView(RelativeLayout):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
 
     def funs(self):
         print('Kliknu sam ovo')

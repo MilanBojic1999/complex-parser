@@ -1,4 +1,6 @@
 from matplotlib import pyplot as pl
+from matplotlib.figure import Figure
+
 from model.parser import Parser, real
 import numpy as np
 
@@ -7,7 +9,7 @@ def null_line(x):
     return 0
 
 
-def complex_plot(expressions: str):
+def complex_plot(expressions: str) -> Figure:
     arr = np.arange(-5., 5., 0.02, dtype='complex_')
 
     p = Parser(expressions)
@@ -26,8 +28,10 @@ def complex_plot(expressions: str):
 
     pl.show()
 
+    return fig
 
-def fun_plot(expressions: str):
+
+def fun_plot(expressions: str) -> Figure:
     arr = np.arange(-5., 5., 0.02, dtype='complex_')
 
     p = Parser(expressions)
@@ -44,12 +48,17 @@ def fun_plot(expressions: str):
 
     pl.grid(True)
 
-    fig.savefig("plot.png")
+    #fig.savefig("plot.png")
 
     pl.show()
+
+    return fig
 
 
 fun = input("Input yout function: ")
 
-fun_plot(fun)
-complex_plot(fun)
+fg1 = fun_plot(fun)
+fg1.savefig("view/input.png")
+
+fg2 = complex_plot(fun)
+fg2.savefig("view/output.png")
