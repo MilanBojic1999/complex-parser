@@ -1,7 +1,7 @@
 from matplotlib import pyplot as pl
 from matplotlib.figure import Figure
 
-from model.parser import Parser, real
+from model.parser import Parser
 import numpy as np
 
 
@@ -48,7 +48,6 @@ def fun_plot(expressions: str) -> Figure:
 
     pl.grid(True)
 
-    #fig.savefig("plot.png")
 
     pl.show()
 

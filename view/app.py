@@ -28,19 +28,20 @@ class ZoomDD(Button):
         self.drop.bind(on_select=self.change)
 
     def change(self, instance, x: str):
-        #print(x, instance)
+        # print(x, instance)
         self.btnnm = x
 
 
 class Plot(Widget):
     src = StringProperty("view/plot.png")
 
+    def relode(self):
+        self.canvas.ask_update()
+
 
 class PlotArea(RelativeLayout):
     src = StringProperty("view/plot.png")
 
-    def __init__(self, **kw):
-        super().__init__(**kw)
 
 
 class AppView(Widget):
@@ -49,6 +50,8 @@ class AppView(Widget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+    def fun_fun(self,instance, str):
+        print(str, 'is from', instance)
 
 class ComplexApp(App):
 
