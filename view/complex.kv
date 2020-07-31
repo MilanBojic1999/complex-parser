@@ -11,31 +11,36 @@
 
 
 <PlotArea>:
-    pl:inputplt
+    pl1:inputplt
     pl2:outputplt
 
     canvas:
         Color:
             rgba: 1,.5,.7,1
-        Rectangle:
-            source: "plot.png"
+        Ellipse:
             pos: self.pos
             size: self.size
 
 
     Plot:
         id:inputplt
-        size_hint: None, None
-        size: 320,240
-        #pos: -320,10
+        size_hint: 0.4,0.8
+        pos_hint:  {'x':0.05, 'y':0.1}
         src: "input.png"
 
     Plot:
         id:outputplt
-        size_hint: 1,1 #size hint je za velicinu u odnosu na roditelja ( Plot Area)
-        #size: 320,240 #ako nema size hint-a onda je ovo apsolutna velicina
-        pos: 0,0
+        size_hint: 0.4,0.8
+        pos_hint:  {'x':0.55, 'y':0.1}
         src: "output.png"
+    ZoomDD:
+        id: zdd
+    Button:
+        text: "Test"
+        size_hint: 0.08,0.02
+        pos_hint: {'x':0.05,'y':0.92}
+        on_release: zdd.open(self)
+
 
 
 <AppView>:
@@ -56,3 +61,5 @@
         size: root.width-20,root.height-60
         pos: 5,20
         #src: "input.png"
+
+
