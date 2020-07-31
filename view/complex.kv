@@ -13,24 +13,17 @@
 <PlotArea>:
     pl1:inputplt
 
-    canvas:
-        Color:
-            rgba: 1,.5,.7,1
-        Ellipse:
-            pos: self.pos
-            size: self.size
-
 
     Plot:
         id:inputplt
-        size_hint: 0.4,0.8
+        size_hint: 0.8,0.8
         pos_hint:  {'x':0.05, 'y':0.1}
         src: root.src
 
     ZoomDD:
         id: zdd
-        size_hint: 0.06,0.025
-        pos_hint:  {'x':0.05, 'y':0.94}
+        size_hint: 0.18,0.040
+        pos_hint:  {'x':0.05, 'y':0.04}
         text: self.btnnm
 
 
@@ -48,15 +41,21 @@
     PlotArea:
         id:plot1
         size_hint: None, None
-        size: root.width-20,root.height-60
-        pos: 5,20
+        size: root.width/2-20,root.height-60
+        pos: 5,30
         src: "input.png"
+
+        TextInput:
+            id: plot_ti
+            size_hint: None,None
+            size: root.width/3,25
+            pos_hint: {'center_x':0.45,'y':.95}
 
     PlotArea:
         id:plot2
         size_hint: None, None
-        size: root.width-20,root.height-60
-        pos: root.center_x+5,20
+        size: root.width/2-20,root.height-60
+        pos: root.center_x+5,30
         src: "output.png"
 
     TextInput:

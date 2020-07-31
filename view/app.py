@@ -18,7 +18,7 @@ class ZoomDD(Button):
         for i in zooms:
             strr: str = str(i) + '%'
             print(strr)
-            btn = Button(text=strr, size_hint_y=None, height=20)
+            btn = Button(text=strr, size_hint_y=None, height=25)
 
             btn.bind(on_press=lambda bt: self.drop.select(bt.text))
 
