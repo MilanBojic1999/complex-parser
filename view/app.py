@@ -7,16 +7,30 @@ from kivy.uix.dropdown import DropDown
 
 zooms = [10, 50, 100, 150, 200]
 
-class ZoomDD(DropDown):
+
+class ZoomDD(Button):
+    btnnm = StringProperty("Zoom")
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.drop = DropDown()
+        # self.text = 'Zoom'
         for i in zooms:
             strr: str = str(i) + '%'
-            btn = Button(text=strr, size_hint_y=None, height=100)
+            print(strr)
+            btn = Button(text=strr, size_hint_y=None, height=20)
 
-            btn.bind(on_relese=lambda bt: self.drop.select(bt.text))
+            btn.bind(on_press=lambda bt: self.drop.select(bt.text))
 
-            self.add_widget(btn)
+            self.drop.add_widget(btn)
+
+        self.bind(on_release=self.drop.open)
+        self.drop.bind(on_select=self.change)
+
+    def change(self, instance, x: str):
+        print(x, instance)
+        self.btnnm = x
+
 
 class Plot(Widget):
     src = StringProperty("view/plot.png")
@@ -27,7 +41,6 @@ class PlotArea(RelativeLayout):
 
     def __init__(self, **kw):
         super().__init__(**kw)
-
 
 
 class AppView(Widget):
