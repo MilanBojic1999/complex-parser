@@ -1,6 +1,6 @@
 
 <Plot>:
-    size: 100,100
+    #size: 100,100
     canvas:
         Color:
             rgba: 1,1,1,1
@@ -12,7 +12,6 @@
 
 <PlotArea>:
     pl1:inputplt
-    pl2:outputplt
 
     canvas:
         Color:
@@ -26,13 +25,8 @@
         id:inputplt
         size_hint: 0.4,0.8
         pos_hint:  {'x':0.05, 'y':0.1}
-        src: "input.png"
+        src: root.src
 
-    Plot:
-        id:outputplt
-        size_hint: 0.4,0.8
-        pos_hint:  {'x':0.55, 'y':0.1}
-        src: "output.png"
     ZoomDD:
         id: zdd
         size_hint: 0.06,0.025
@@ -41,9 +35,8 @@
 
 
 <AppView>:
-    pl: plot
-    #size_hint: None, None
-    #size: self.parent.size
+    pl: plot1
+    pl2: plot2
 
     canvas.before:
         Color:
@@ -53,10 +46,24 @@
             size: self.size
 
     PlotArea:
-        id:plot
-        #size_hint: None, None
+        id:plot1
+        size_hint: None, None
         size: root.width-20,root.height-60
         pos: 5,20
-        #src: "input.png"
+        src: "input.png"
+
+    PlotArea:
+        id:plot2
+        size_hint: None, None
+        size: root.width-20,root.height-60
+        pos: root.center_x+5,20
+        src: "output.png"
+
+    TextInput:
+        id:tinput
+        size: root.width/2,27
+        center_y: root.center_y/10
+        pos_hint: {'center_x': None}
+        center_x: root.center_x/2
 
 
