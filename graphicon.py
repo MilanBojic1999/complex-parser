@@ -9,10 +9,11 @@ def null_line(x):
     return 0
 
 
-def complex_plot(expressions: str) -> Figure:
-    arr = np.arange(-5., 5., 0.02, dtype='complex_')
 
-    p = Parser(expressions)
+
+
+def complex_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='complex_')):
+    # arr = np.arange(-5., 5., 0.02, dtype='complex_')
 
     f1 = np.vectorize(p.real_exec, otypes=[complex])
     f2 = np.vectorize(p.imag_exec, otypes=[complex])
@@ -28,14 +29,10 @@ def complex_plot(expressions: str) -> Figure:
 
     pl.show()
 
-    return fig
+    return fig, arr
 
 
-def fun_plot(expressions: str) -> Figure:
-    arr = np.arange(-5., 5., 0.02, dtype='complex_')
-
-    p = Parser(expressions)
-
+def fun_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='complex_')) -> Figure:
     f1 = np.vectorize(p.real_exec, otypes=[complex])
     f2 = np.vectorize(p.imag_exec, otypes=[complex])
     nf = np.vectorize(null_line, otypes=[complex])
@@ -47,7 +44,6 @@ def fun_plot(expressions: str) -> Figure:
     ax.plot(arr, f1(arr), color='red')
 
     pl.grid(True)
-
 
     pl.show()
 

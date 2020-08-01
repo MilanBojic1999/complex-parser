@@ -43,18 +43,13 @@ class PlotArea(RelativeLayout):
     src = StringProperty("view/plot.png")
 
 
-def what_fun(string):
-    print(string)
-
-
-
 class AppView(Widget):
     tinp = ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def what_fun(self,string):
+    def what_fun(self, string):
         print(string)
 
 
