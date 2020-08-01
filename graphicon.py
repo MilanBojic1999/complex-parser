@@ -27,7 +27,7 @@ def complex_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='co
 
     pl.grid(True)
 
-    pl.show()
+    #pl.show()
 
     return fig, arr
 
@@ -45,15 +45,15 @@ def fun_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='comple
 
     pl.grid(True)
 
-    pl.show()
+    #pl.show()
 
     return fig
 
 
-fun = input("Input yout function: ")
-
-fg1 = fun_plot(fun)
-fg1.savefig("view/input.png")
-
-fg2 = complex_plot(fun)
-fg2.savefig("view/output.png")
+# fun = input("Input yout function: ")
+#
+# fg1 = fun_plot(fun)
+# fg1.savefig("view/input.png")
+#
+# fg2 = complex_plot(fun)
+# fg2.savefig("view/output.png")

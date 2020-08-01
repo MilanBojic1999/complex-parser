@@ -1,13 +1,18 @@
 
 <Plot>:
     #size: 100,100
-    canvas:
-        Color:
-            rgba: 1,1,1,1
-        Rectangle:
-            source: self.src
-            pos: self.pos
-            size: self.size
+#    canvas:
+#        Color:
+#            rgba: 1,1,1,1
+#        Rectangle:
+#            source: self.src
+#            pos: self.pos
+#            size: self.size
+    AsyncImage:
+        source: root.src
+        pos: root.pos
+        size: root.size
+        allow_stretch: True
 
 
 <PlotArea>:
@@ -16,7 +21,7 @@
 
     Plot:
         id:inputplt
-        size_hint: 0.8,0.8
+        size_hint: 0.95,0.95
         pos_hint:  {'x':0.05, 'y':0.1}
         src: root.src
 

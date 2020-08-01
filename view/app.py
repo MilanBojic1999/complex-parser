@@ -5,6 +5,9 @@ from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.dropdown import DropDown
 
+from Controler import *
+import time
+
 zooms = [10, 50, 100, 150, 200]
 
 
@@ -42,6 +45,15 @@ class Plot(Widget):
 class PlotArea(RelativeLayout):
     src = StringProperty("view/plot.png")
 
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        time.sleep(10)
+        self.arr = input_function('x')
+        #transformation('x+i*sqrt(x)', self.arr)
+
+    def relode(self):
+        self.canvas.ask_update()
+
 
 class AppView(Widget):
     tinp = ObjectProperty(None)
@@ -51,6 +63,9 @@ class AppView(Widget):
 
     def what_fun(self, string):
         print(string)
+
+    def input_read(self, string):
+        print('Posia je', string)
 
 
 class ComplexApp(App):
