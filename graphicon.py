@@ -9,9 +9,6 @@ def null_line(x):
     return 0
 
 
-
-
-
 def complex_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='complex_')):
     # arr = np.arange(-5., 5., 0.02, dtype='complex_')
 
@@ -21,15 +18,22 @@ def complex_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='co
 
     fig, ax = pl.subplots()
 
+    min = np.amin(f2(arr))
+    max = np.amax(f2(arr))
+
+    zeros = np.linspace(min, max, 100)
+
+    print(zeros)
+
     ax.plot(arr, nf(arr), color='green')
-    ax.plot(nf(arr), arr, color='green')
+    ax.plot(nf(zeros), zeros, color='green')
     ax.plot(f1(arr), f2(arr), color='blue')
 
     pl.grid(True)
 
-    #pl.show()
+    # pl.show()
 
-    return fig, arr
+    return fig
 
 
 def fun_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='complex_')) -> Figure:
@@ -39,16 +43,22 @@ def fun_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='comple
 
     fig, ax = pl.subplots()
 
+    min = np.amin(f1(arr))
+    max = np.amax(f1(arr))
+
+
+    zeros = np.linspace(min, max, 100)
+
+
     ax.plot(arr, nf(arr), color='green')
-    ax.plot(nf(arr), arr, color='green')
+    ax.plot(nf(zeros), zeros, color='green')
     ax.plot(arr, f1(arr), color='red')
 
     pl.grid(True)
 
-    #pl.show()
+    # pl.show()
 
     return fig
-
 
 # fun = input("Input yout function: ")
 #

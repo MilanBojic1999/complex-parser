@@ -9,7 +9,7 @@ def transformation(fun: str, arr: np.ndarray):
 
     fig = complex_plot(p, arr)
 
-    fig.savefig("view/output.png")
+    fig.savefig("output.png")
 
 
 def input_function(fun: str, zoom: float = 1.0) -> np.ndarray:
@@ -23,6 +23,6 @@ def input_function(fun: str, zoom: float = 1.0) -> np.ndarray:
 
     fig = fun_plot(p, arr)
 
-    fig.savefig("view/input.png")
+    fig.savefig("input.png")
 
     return res

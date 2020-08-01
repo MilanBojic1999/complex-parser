@@ -47,9 +47,9 @@ class PlotArea(RelativeLayout):
 
     def __init__(self, **kw):
         super().__init__(**kw)
-        time.sleep(10)
-        self.arr = input_function('x')
-        #transformation('x+i*sqrt(x)', self.arr)
+        #time.sleep(10)
+        self.arr = input_function('pow(x,3)')
+        transformation('x+i*100', self.arr)
 
     def relode(self):
         self.canvas.ask_update()
