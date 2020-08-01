@@ -20,7 +20,7 @@ class ZoomDD(Button):
         # self.text = 'Zoom'
         for i in zooms:
             strr: str = str(i) + '%'
-            print(strr)
+            #print(strr)
             btn = Button(text=strr, size_hint_y=None, height=25)
 
             btn.bind(on_press=lambda bt: self.drop.select(bt.text))
@@ -48,8 +48,11 @@ class PlotArea(RelativeLayout):
     def __init__(self, **kw):
         super().__init__(**kw)
         #time.sleep(10)
-        self.arr = input_function('pow(x,3)')
-        transformation('x+i*100', self.arr)
+        self.input_str = 'x'
+        self.output_str = 'sqrt(x*i)'
+        self.arr = input_function(self.input_str)
+        print(self.arr)
+        transformation(self.output_str, self.arr)
 
     def relode(self):
         self.canvas.ask_update()

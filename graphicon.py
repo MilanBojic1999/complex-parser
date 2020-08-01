@@ -18,12 +18,12 @@ def complex_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='co
 
     fig, ax = pl.subplots()
 
-    min = np.amin(f2(arr))
-    max = np.amax(f2(arr))
+    min1 = min(np.amin(f2(arr)), -10)
+    max1 = max(np.amax(f2(arr)), 10)
 
-    zeros = np.linspace(min, max, 100)
+    zeros = np.linspace(min1, max1, 100, dtype="complex_")
 
-    print(zeros)
+    # print(zeros)
 
     ax.plot(arr, nf(arr), color='green')
     ax.plot(nf(zeros), zeros, color='green')
@@ -46,9 +46,7 @@ def fun_plot(p: Parser, arr: np.ndarray = np.arange(-5., 5., 0.02, dtype='comple
     min = np.amin(f1(arr))
     max = np.amax(f1(arr))
 
-
-    zeros = np.linspace(min, max, 100)
-
+    zeros = np.linspace(min, max, 100, dtype="complex_")
 
     ax.plot(arr, nf(arr), color='green')
     ax.plot(nf(zeros), zeros, color='green')

@@ -7,8 +7,7 @@ _Constants = {
     'PI': cm.pi,
     'e': cm.e,
     'phi': (1 + 5 ** .5) / 2,
-    'i': cm.sqrt(-1)
-
+    'i': complex(0,1)
 }
 
 li = _Constants['i']
@@ -64,7 +63,7 @@ class Parser:
     def __init__(self, expr: str):
         self.expr = expr
 
-    def exec(self, x):
+    def exec(self, x) -> complex:
         if isinstance(x, collections.Hashable) and x in _Constants.keys():
             x = _Constants.get(x)
         local['x'] = x
