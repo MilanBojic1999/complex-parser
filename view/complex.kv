@@ -48,8 +48,16 @@
         TextInput:
             id: plot_ti
             size_hint: None,None
-            size: root.width/3,25
-            pos_hint: {'center_x':0.45,'y':.95}
+            size: root.width/3,27
+            pos_hint: {'x':0.05,'y':.95}
+
+        Button:
+            id: tbutt:
+            size_hint: None,None
+            size: root.width/20,28
+            pos_hint: {'x':0.75,'y':.95}
+            text: "Fun!!!"
+            on_release: root.what_fun(plot_ti.text)
 
     PlotArea:
         id:plot2
@@ -72,4 +80,4 @@
         pos_hint: {'center_x': None}
         center_x: tinput.x+tinput.width+root.width/24
         text: "Fun!!!"
-
+        on_release: root.what_fun(tinput.text)
