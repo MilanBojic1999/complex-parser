@@ -2,6 +2,7 @@
 <Plot>:
 
     AsyncImage:
+        id: aimg
         source: root.src
         pos: root.pos
         size: root.size
@@ -55,7 +56,7 @@
             size: root.width/20,28
             pos_hint: {'x':0.75,'y':.95}
             text: "Fun!!!"
-            on_release: root.what_fun(plot_ti.text)
+            on_release: root.get_ofun(plot_ti.text)
 
     PlotArea:
         id:plot2
@@ -78,4 +79,4 @@
         pos_hint: {'center_x': None}
         center_x: tinput.x+tinput.width+root.width/24
         text: "Fun!!!"
-        on_release: root.what_fun(tinput.text)
+        on_release: root.get_ifun(tinput.text)
