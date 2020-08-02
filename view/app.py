@@ -19,10 +19,8 @@ class ZoomDD(Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.drop = DropDown()
-        # self.text = 'Zoom'
         for i in zooms:
             strr: str = str(i) + '%'
-            # print(strr)
             btn = Button(text=strr, size_hint_y=None, height=25)
 
             btn.bind(on_press=lambda bt: self.drop.select(bt.text))
@@ -33,7 +31,6 @@ class ZoomDD(Button):
         self.drop.bind(on_select=self.change)
 
     def change(self, instance, x: str):
-        # print(x, instance)
         self.zoom_text = x
 
 
@@ -68,12 +65,6 @@ class AppView(Widget):
         self.output_str = 'sin(x)+cos(x)'
         self.create_plots()
 
-    def what_fun(self, string):
-        print(string)
-
-    def input_read(self, string):
-        print('Posia je', string)
-
     def get_ifun(self, string):
         if len(string) == 0:
             return
@@ -90,12 +81,12 @@ class AppView(Widget):
         inz = self.ids.plot1.ids.zdd.zoom_text
         outz = self.ids.plot2.ids.zdd.zoom_text
 
-        iz = int(inz[0:len(inz)-1])
-        oz = int(outz[0:len(outz)-1])
+        iz = int(inz[0:len(inz) - 1])
+        oz = int(outz[0:len(outz) - 1])
 
-        print(iz,' ',oz)
-
-        arr = input_function(self.input_str,iz/100,oz/100)
+        arr = input_function(self.input_str, iz / 100, oz / 100)
+        if arr is None:
+            return
         transformation(self.output_str, arr)
         self.canvas.ask_update()
         self.ids.plot1.relode()
@@ -106,7 +97,6 @@ class ComplexApp(App):
 
     def build(self):
         v = AppView()
-        print(v.ids)
         return v
 
 

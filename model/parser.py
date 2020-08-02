@@ -7,7 +7,7 @@ _Constants = {
     'PI': cm.pi,
     'e': cm.e,
     'phi': (1 + 5 ** .5) / 2,
-    'i': complex(0,1)
+    'i': complex(0, 1)
 }
 
 li = _Constants['i']
@@ -67,7 +67,12 @@ class Parser:
         if isinstance(x, collections.Hashable) and x in _Constants.keys():
             x = _Constants.get(x)
         local['x'] = x
-        return eval(self.expr, local)
+        try:
+            cmp = eval(self.expr, local)
+        except Exception:
+            raise Exception
+        else:
+            return cmp
 
     def real_exec(self, x) -> float:
         return real(self.exec(x))

@@ -7,21 +7,30 @@ from matplotlib.figure import Figure
 def transformation(fun: str, arr: np.ndarray):
     p = Parser(fun)
 
-    fig = complex_plot(p, arr)
+    try:
+        p.exec(0)
+    except Exception:
+        return
+    else:
 
-    fig.savefig("output.png")
+        fig = complex_plot(p, arr)
+
+        fig.savefig("output.png")
 
 
-def input_function(fun: str, in_zoom: float = 1.0, out_zoom: float = 1.0) -> np.ndarray:
+def input_function(fun: str, in_zoom: float = 1.0, out_zoom: float = 1.0):
     p = Parser(fun)
+
+    try:
+        p.exec(0)
+    except Exception:
+        return None
 
     arr = np.arange(-10 * in_zoom, 10 * in_zoom, 0.02)
 
     out_arr = np.arange(-10 * out_zoom, 10 * out_zoom, 0.02)
 
     vf = np.vectorize(p.real2complex, otypes=[complex])
-
-    print(vf(2 * li), fun)
 
     res = vf(out_arr)
 
