@@ -13,11 +13,8 @@ input_str = 'x'
 output_str = 'sin(x)+cos(x)'
 
 
-
-
-
 class ZoomDD(Button):
-    btnnm = StringProperty("Zoom")
+    zoom_text = StringProperty("100%")
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -35,9 +32,9 @@ class ZoomDD(Button):
         self.bind(on_release=self.drop.open)
         self.drop.bind(on_select=self.change)
 
-    def change(self, x: str):
+    def change(self, instance, x: str):
         # print(x, instance)
-        self.btnnm = x
+        self.zoom_text = x
 
 
 class Plot(Widget):
@@ -90,7 +87,15 @@ class AppView(Widget):
         self.create_plots()
 
     def create_plots(self):
-        arr = input_function(self.input_str)
+        inz = self.ids.plot1.ids.zdd.zoom_text
+        outz = self.ids.plot2.ids.zdd.zoom_text
+
+        iz = int(inz[0:len(inz)-1])
+        oz = int(outz[0:len(outz)-1])
+
+        print(iz,' ',oz)
+
+        arr = input_function(self.input_str,iz/100,oz/100)
         transformation(self.output_str, arr)
         self.canvas.ask_update()
         self.ids.plot1.relode()
